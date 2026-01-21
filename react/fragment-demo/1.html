@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>文档碎片</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+        const items = [
+            {
+
+            }
+        ]
+
+        const container = document.getElementById('list');
+        // const oDiv = document.createElement('div');
+        // 性能优化，文档碎片
+        const fragment = document.createDocumentFragment();
+
+        items.forEach(item =>{
+            const wrapper = document.createElement('div');
+            const title = document.createElement('h3');
+            const desc = document.createElement('p');
+            title.textContent = item.title;
+            desc.textContent = item.content;
+            wrapper.appendChild(title);
+            wrapper.appendChild(desc);
+            fragment.appendChild(wrapper);
+        })
+    </script>
+</body>
+</html>

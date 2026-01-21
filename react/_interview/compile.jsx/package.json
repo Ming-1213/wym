@@ -1,0 +1,21 @@
+{
+  "name": "compile.jsx",
+  "version": "1.0.0",
+  "description": "- JSX ?\r     - JSX 不能独立运行\r     - vite 工程化\r         jsx -> React.createElement\r     - 必须在 React 环境中运行",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/cli": "^7.28.0",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-react": "^7.27.1"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.28.0"
+  }
+}
