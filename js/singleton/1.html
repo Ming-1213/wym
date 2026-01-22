@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计模式之单例模式</title>
+</head>
+<body>
+    <script>
+        /*
+        * Storage 本地存储类
+        * 单例模式 getInstance 静态方法
+        * @func getItem(key) 获取本地存储的值
+        * @func setItem(key, value) 设置本地存储的值
+        */
+        // 早期的JS没有Class，通过 函数 + prototype 来实现类 原型式的
+        // JS 的原型式的 灵活、优雅、简单
+        // 面向对象都不用学
+        // Java，C++ 不能理解
+        // es6 为了兼容 es6 的目标就是走向企业级开发，拥抱更多开发者
+        // 如何确保class只会实例化一次
+        // 1.全局变量
+        // 2.闭包
+        class Storage {
+            static instance; // 静态属性
+            constructor() {
+                console.log(this,'~~~');
+            }
+            // 静态方法
+            static getInstance() {
+                // 返回一个实例
+                // 如果实例化过 返回之前的
+                // 第一次 实例化
+                // 静态属性
+                // es6 class 语法糖
+                if(!Storage.instance) { // 没有实例化过
+                    Storage.instance = new Storage(); // 实例化
+                }
+                return Storage.instance;
+            }
+            getItem(key) {
+                return localStorage.getItem(key);
+            }
+            setItem(key, value) {
+                localStorage.setItem(key, value);
+            }
+        }
+        // 单例 性能好 
+        // 如何干掉new，又要拿到对象的实例呢？
+        // 静态方法 属于类的方法 不用实例化 
+        // public private 属于实例的方法
+        const storage1 = /* new */ Storage.getInstance(); // 单例的对象
+        const storage2 = /* new */ Storage.getInstance();
+        // storage1 和 storage2 都是引用
+        // es6 class语法糖 构造类 本质还是原型式的
+        console.log(storage1 === storage2, '~~~'); // false
+        // 如何让它变成true
+        storage1.setItem('name', 'WYM');
+        console.log(storage1.getItem('name'));
+        console.log(storage2.getItem('name'));
+    </script>
+</body>
+</html>
